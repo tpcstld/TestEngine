@@ -37,7 +37,7 @@ Example:
     sys.path.append("../testing")
     from Testers import CPPTester
 
-    tester = CPPTester( ".//{{ binary_name }}", "wlp4scan.cc", __name__=="__main__")
+    tester = CPPTester( "./{{ binary_name }}", "wlp4scan.cc", __name__=="__main__")
     tester.always_print_output = True
 
     tester.testcase("00", "ERROR", name="invalid twozeros")
