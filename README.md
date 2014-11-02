@@ -16,11 +16,54 @@ tester = CPPTester( "./{{ binary_name }}", "wlp4scan.cc", __name__="__main__" )
 tester.testcase("00", "ERROR", name="invalid two-zeros")
 
 tester.out_stream = tester.STD_OUT
-
 tester.testcase("0", "NUM 0", name="zero number")
 tester.testcase("htht", ["This","Is an", "Example"])
 
 tester.print_summary()
+```
+
+Usage
+-----
+
+To set up the unit-tester, import and construct the testing class you want.
+
+There are currently 3 different classes:
+
+```
+CompileTester( command, compile_command )
+    A blanket tester for all compiled programs
+            command: command-line command you would invoke to test your program
+    compile_command: command-line command to compile your program.
+
+AsmTester( javaCommand, filename )
+    A tester for cs241's .mips files
+        javaCommand: command-line command you would invoke to test your program
+           filename: the filename of your .mips source file
+
+CPPTester( command, filename, [create=True] )
+    A tester for C++ programs
+            command: command-line command you would invoke to test your program
+           filename: the filename[s] of your c++ source file[s], space delimited
+             create: (optional) if false, does not compile source.
+```
+
+To write a test case, invoke the `testcase` method
+
+```
+{tester}.testcase( startup, asserts, [name=None] )
+    Creates a test case.
+            startup: what to feed in STDIN to your program
+            asserts: what parts of the output should match
+               name: (optiona) name of the test case
+```
+
+`asserts` may be either a string or a list (for multiple matches)
+
+To conclude the test suite, invoke the `print_summary` method
+
+```
+{tester}.print_summary()
+    Prints a summary of the results and performs cleanup.
 ```
 
 Options
@@ -28,7 +71,7 @@ Options
 
 Below are the options that all testers support.
 
-You can set an option by writing `{tester_variable}.{option} = {new_value}
+You can set an option by writing `{tester_variable}.{option} = {new_value}`
 
 ```
 TEMP_BINARY_NAME:           type: string
