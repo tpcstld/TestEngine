@@ -1,37 +1,6 @@
 #1/usr/bin/python
 import subprocess
 
-"""
-Options:
-    TEMP_BINARY_NAME (string): 
-        Rename the temporary binary file created
-        Replaces {{ binary_name }} in the compile string
-        default: "tempbinary"
-    out_stream (STD_OUT|STD_ERR): 
-        Choose which stream the test will read it's output from
-        default: STD_ERR
-    always_print_output (bool): 
-        True: Print the binary's output, even if there's no error
-        False: Only print the binary's output if there's an error
-        default: False
-    only_show_checked_output (bool): 
-        True: When printing output, only show the stream specified by out_stream
-        False: When printing output, show's both STD_OUT and STD_ERR output
-        default: False
-    debug_tester (bool): 
-        True: Show the shell commands that the tester is executing
-        False: Do not log show the shell commands
-        default: False
-    exact_match_only (bool):
-        True: Output from out_stream must match exactly
-        False: Output from out_stream 
-        default: False
-    cleanup_binary (bool):
-        True: Deletes the temporary binary after testing has finished
-        False: Does not delete the temporary binary
-        default: True
-"""
-
 class BaseTester:
     TEMP_BINARY_NAME = "tempbinary"
     STD_OUT = 0
