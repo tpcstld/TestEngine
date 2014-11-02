@@ -30,21 +30,6 @@ Options:
         True: Deletes the temporary binary after testing has finished
         False: Does not delete the temporary binary
         default: True
-
-Example:
-
-    import sys
-    sys.path.append("../testing")
-    from Testers import CPPTester
-
-    tester = CPPTester( "./{{ binary_name }}", "wlp4scan.cc", __name__=="__main__")
-    tester.always_print_output = True
-
-    tester.testcase("00", "ERROR", name="invalid twozeros")
-    tester.testcase("0", "NUM 0", name="zero number")
-    tester.testcase("htht", ["This","Is an", "Example"])
-    
-    tester.print_summary()
 """
 
 class BaseTester:
